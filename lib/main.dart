@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'core/di/injection_container.dart';
+import 'presentation/theme/app_theme.dart';
+import 'presentation/pages/home_page.dart';
 
 void main() {
   configureDependencies();
@@ -13,18 +15,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'TAP Assignment',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const Scaffold(
-        body: Center(
-          child: Text(
-            'TAP Assignment - Company Detail App',
-            style: TextStyle(fontSize: 24),
-          ),
-        ),
-      ),
+      theme: AppTheme.lightTheme,
+      home: const HomePage(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }

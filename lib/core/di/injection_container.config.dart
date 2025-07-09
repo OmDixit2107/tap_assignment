@@ -18,6 +18,9 @@ import '../../data/repositories/company_repository_impl.dart' as _i970;
 import '../../domain/repositories/company_repository.dart' as _i109;
 import '../../domain/usecases/get_companies.dart' as _i499;
 import '../../domain/usecases/get_company_detail.dart' as _i98;
+import '../../presentation/bloc/company_detail/company_detail_bloc.dart'
+    as _i716;
+import '../../presentation/bloc/home/home_bloc.dart' as _i751;
 import 'injection_container.dart' as _i809;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -42,6 +45,10 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i98.GetCompanyDetail>(
       () => _i98.GetCompanyDetail(gh<_i109.CompanyRepository>()),
+    );
+    gh.factory<_i751.HomeBloc>(() => _i751.HomeBloc(gh<_i499.GetCompanies>()));
+    gh.factory<_i716.CompanyDetailBloc>(
+      () => _i716.CompanyDetailBloc(gh<_i98.GetCompanyDetail>()),
     );
     return this;
   }
