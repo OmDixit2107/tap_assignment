@@ -507,19 +507,48 @@ class _CompanyDetailPageState extends State<CompanyDetailPage> {
   }
 
   List<BarChartGroupData> _generateCrBarGroups(List<double> crValues) {
+    final isEbitda = selectedFinancialType == 'EBITDA';
     return List.generate(crValues.length, (index) {
       final value = crValues[index];
-      return BarChartGroupData(
-        x: index,
-        barRods: [
-          BarChartRodData(
-            toY: value,
-            color: const Color(0xFFB6C3F9),
-            width: 4,
-            borderRadius: BorderRadius.circular(2),
-          ),
-        ],
-      );
+      if (isEbitda) {
+        return BarChartGroupData(
+          x: index,
+          barRods: [
+            BarChartRodData(
+              fromY: 0,
+              toY: value,
+              width: 12,
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(2),
+                topRight: Radius.circular(2),
+              ),
+              rodStackItems: value > 1
+                  ? [
+                      BarChartRodStackItem(0, 1, Color(0xFF111827)),
+                      BarChartRodStackItem(1, value, Color(0xFFB6C3F9)),
+                    ]
+                  : [BarChartRodStackItem(0, value, Color(0xFF111827))],
+            ),
+          ],
+        );
+      } else {
+        // Revenue: solid blue
+        return BarChartGroupData(
+          x: index,
+          barRods: [
+            BarChartRodData(
+              fromY: 0,
+              toY: value,
+              color: Color(0xFF2563EB),
+              width: 12,
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(2),
+                topRight: Radius.circular(2),
+              ),
+            ),
+          ],
+        );
+      }
     });
   }
 
