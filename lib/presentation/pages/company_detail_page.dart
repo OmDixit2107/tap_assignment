@@ -71,7 +71,7 @@ class _CompanyDetailPageState extends State<CompanyDetailPage> {
 
           // Tab Section
           _buildTabSection(context, selectedTabIndex),
-          const SizedBox(height: 24),
+          // const SizedBox(height: 24),
 
           // Tab Content
           if (selectedTabIndex == 0) ...[
@@ -604,16 +604,16 @@ class _CompanyDetailPageState extends State<CompanyDetailPage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'PROS & CONS ANALYSIS',
-          style: TextStyle(
-            fontSize: 12,
-            fontWeight: FontWeight.w600,
-            color: Color(0xFF9CA3AF),
-            letterSpacing: 0.8,
-          ),
-        ),
-        const SizedBox(height: 16),
+        // const Text(
+        //   'PROS & CONS ANALYSIS',
+        //   style: TextStyle(
+        //     fontSize: 12,
+        //     fontWeight: FontWeight.w600,
+        //     color: Color(0xFF9CA3AF),
+        //     letterSpacing: 0.8,
+        //   ),
+        // ),
+        // const SizedBox(height: 16),
 
         // Pros Section
         _buildProsConsSection(
